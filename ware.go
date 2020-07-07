@@ -76,7 +76,7 @@ func SaveProperty(usex models.UserSession, isMain bool) string {
 		return c3mcommon.ReturnJsonMessage("0", "properties parse json fail", "", "")
 	}
 	//get all product
-	prods := rpch.GetAllProds(usex.UserID, usex.Shop.ID.Hex(), true)
+	prods := rpch.GetAllProds(usex.UserID, usex.Shop.ID.Hex())
 	propcodes := make(map[string]string)
 
 	for _, item := range prods {
@@ -111,7 +111,7 @@ func SaveProperty(usex models.UserSession, isMain bool) string {
 }
 func LoadProduct(usex models.UserSession, isMain bool) string {
 
-	prods := rpch.GetAllProds(usex.UserID, usex.Shop.ID.Hex(), true)
+	prods := rpch.GetAllProds(usex.UserID, usex.Shop.ID.Hex())
 	if len(prods) == 0 {
 		return c3mcommon.ReturnJsonMessage("2", "", "no prod found", "")
 	}
